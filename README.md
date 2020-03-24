@@ -1,79 +1,60 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# Blade Component
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## What is blade in laravel?
 
-## About Laravel
+Blade is the simple, yet powerful templating engine provided with Laravel. Unlike other popular PHP templating engines, Blade does not restrict you from using plain PHP code in your views. Blade view files use the .blade.php file extension and are typically stored in the resources/views directory.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## What is component in laravel?
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Components are a reusable group of elements. Like you may want to create a Navbar to be used in almost all of your web-app pages. So you build your Navbar as a Component and tell laravel to grab it whenever you need it, and for many times as you like.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Steps To Install And Use Blade Component
 
-## Learning Laravel
+Install Fresh Laravel Project
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+#### composer create-project –prefer-dist laravel/laravel blade_component
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Now, set up the database in the .env file.
+We are going to see the Blade X using an Listing Users example. So we Will Use By Default Files Like HomeController. But Before It We Need To Install  
+#### composer require laravel/ui and php artisan ui vue --auth
+After that run  
+#### php artisan migrate
 
-## Laravel Sponsors
+For Create Component Run Following Command
+#### php artisan make:component userlist 
+It Will Create file inside app/views/component/userlist.php And resources/views/components/userlist.blade.php file
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+We need to make routes in the routes/web.php file
+#### Route::get('/home','HomeController@index');
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+Also, we need to make functions in the App/Http/Controllers/HomeController.php file.
+![homeindex](/public/homeindex.png)
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+First, we are going to write blade x tag Into resources/Views/home.blade.php file.
+In home.blade.php file <x-userlist></x-userlist> tag userlist is component view file into 
+resources/views/components/userlist.blade.php file.whatever data pass into <x-userlist> tag it will render into userlist.blade.php file.
+![homeindexview](/public/homeindexview.png)
+![homeindexcomponentview](/public/homeindexcomponentview.png)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+In app\view\components\userlist.php file we need to pass $users variable into contruct method.
+![homeindexcomponent1](/public/homeindexcomponent1.png)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+For More Details Can Visit Following Link:- https://github.com/jigard/blade_component_laravel7
 
-## License
+## Installation And Use
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# blade_component_laravel7
+    $ git clone https://github.com/jigard/blade_component_laravel7
+
+    $ cp .env.example .env
+Change configuration according to your need in ".env" file and create Database
+    
+    $ composer install
+    
+    $ php artisan migrate
+    
+    $ php artisan serve
+
+
